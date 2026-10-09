@@ -1,0 +1,16 @@
+# Ambiente Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Arquivos locais e dados de faturas
+*.pdf
+conta.json
+*.ipynb
+.ipynb_checkpoints/
+
+# Configurações locais
+.env
+.env.*
