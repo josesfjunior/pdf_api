@@ -1,0 +1,23 @@
+[Unit]
+Description=API de extracao de faturas Equatorial
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=equatorial-api
+Group=equatorial-api
+WorkingDirectory=/opt/equatorial-api
+EnvironmentFile=/etc/equatorial-api.env
+ExecStart=/opt/equatorial-api/.venv/bin/uvicorn main:app --host ${API_HOST} --port ${API_PORT}
+Restart=on-failure
+RestartSec=5
+
+# A aplicacao so precisa ler o codigo e gravar PDFs temporarios.
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
